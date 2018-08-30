@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Fact
 {
-
     private String name;
 
     private FactState value = FactState.FALSE;

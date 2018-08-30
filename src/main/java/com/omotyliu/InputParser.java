@@ -30,6 +30,18 @@ public class InputParser {
 
     private List<String> rowLinesCopy = new ArrayList<>();
 
+    public List<String> getFacts() {
+        return facts;
+    }
+
+    public List<String> getRules() {
+        return rules;
+    }
+
+    public List<String> getQueries() {
+        return queries;
+    }
+
     public InputParser(String filePath) {
         this.filePath = filePath;
     }

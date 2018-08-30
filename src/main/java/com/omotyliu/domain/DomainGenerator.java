@@ -1,5 +1,6 @@
 package com.omotyliu.domain;
 
-public class DomainGenerator {
+public class DomainGenerator
+{
 
 }
