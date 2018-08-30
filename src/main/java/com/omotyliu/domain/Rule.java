@@ -1,4 +1,6 @@
 package com.omotyliu.domain;
 
-public class Rule {
+public class Rule
+{
+
 }
