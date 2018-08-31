@@ -23,4 +23,16 @@ public class Fact
         this.name = name;
         this.value = state;
     }
+
+
+    public Fact operator(Operator op)
+    {
+        return null;
+    }
+
+    public Fact operator(Operator op, Fact fact)
+    {
+        return null;
+    }
+
 }

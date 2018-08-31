@@ -15,9 +15,8 @@ public class Main {
         {
             InputParser parser = new InputParser(args[0]);
             parser.parseFile();
+            parser.getFacts().stream().map(s -> new Fact(s, FactState.TRUE));
 
-            parser.getFacts().stream().map(s -> new Fact(s, FactState.TRUE)).collect(Collectors.toList());
-            FactObsorver
         }
 
     }
