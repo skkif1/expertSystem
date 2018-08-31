@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Operator
 {
-    List<String> knownOperators = Arrays.asList("=>");
+    public static final List<String> knownOperators = Arrays.asList("=>");
 
 
     private final String value;

@@ -12,15 +12,15 @@ public class Fact
     private List<Rule> rules = new ArrayList<>();
 
 
-    private Fact()
+    public Fact(String name)
     {
         FactObsorver.reqFact(this);
+        this.name = name;
     }
 
     public Fact(String name, FactState state)
     {
-        this();
-        this.name = name;
+        this(name);
         this.value = state;
     }
 
