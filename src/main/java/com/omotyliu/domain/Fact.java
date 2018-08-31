@@ -1,5 +1,7 @@
 package com.omotyliu.domain;
 
+import com.omotyliu.operators.Operator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,14 @@ public class Fact
 
     private List<Rule> rules = new ArrayList<>();
 
+    public void setValue(FactState value) {
+        this.value = value;
+    }
+
+    public FactState getValue() {
+
+        return value;
+    }
 
     public Fact(String name)
     {

@@ -1,7 +1,6 @@
 package com.omotyliu;
 
-import com.omotyliu.domain.Fact;
-import com.omotyliu.domain.Operator;
+import com.omotyliu.operators.Operator;
 import org.apache.commons.lang3.StringUtils;
 
 public class Util
