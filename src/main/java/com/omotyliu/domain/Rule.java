@@ -4,17 +4,19 @@ import com.omotyliu.Util;
 import com.omotyliu.operators.Operator;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class Rule
 {
 
     private String rowRule;
 
-    private List<Fact> facts = new ArrayList<>();
+    private Map<String, RuleToken> tokenObj = new HashMap<>();
 
-    private List<Operator> operators = new ArrayList<>();
+    private LinkedList<RuleToken> rule = new LinkedList<>();
+
 
     public Rule() {
         FactObsorver.reqRule(this);
@@ -30,27 +32,44 @@ public class Rule
     private void parseRule()
     {
         String[] arr = StringUtils.split(rowRule, " \t");
-        Fact first = null;
 
         for (String s : arr)
         {
             if (Util.isFact(s))
             {
-                Fact temp = new Fact(s);
-                facts.add(temp);
-                if (first == null) {
-                    first = temp;
-                } else {
-
-                }
+                Fact temp = Fact.getFact(s);
+                rule.add(temp);
+                tokenObj.put(s, temp);
             }
             else if (Util.isOperator(s))
             {
-                operators.add(Operator.getOperator(s));
+                Operator op = Operator.getOperator(s);
+                rule.add(op);
+                tokenObj.put(s, op);
+            }
+
+
+        }
+    }
+
+
+    public Fact execute() {
+        Fact temp = null;
+
+        Operator op = null;
+
+        for (RuleToken token : rule) {
+            if (token instanceof Fact) {
+                if (temp == null) {
+                    temp = (Fact) token;
+                } else {
+                    temp.operator(op, (Fact) token);
+                }
+            } else {
+                op = (Operator) token;
             }
         }
 
-
+        return temp;
     }
-
 }

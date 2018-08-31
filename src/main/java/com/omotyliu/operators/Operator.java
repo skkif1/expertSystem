@@ -1,13 +1,14 @@
 package com.omotyliu.operators;
 
 import com.omotyliu.domain.Fact;
+import com.omotyliu.domain.RuleToken;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 
-public abstract class Operator {
+public abstract class Operator implements RuleToken {
     public static final List<String> knownOperators = Arrays.asList("=>");
 
     protected BinaryOperator<Fact> binaryOperator;

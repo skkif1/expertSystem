@@ -1,21 +1,22 @@
 package com.omotyliu.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FactObsorver
 {
-    private static List<Fact> knownFacts = new ArrayList<>();
+    public static Set<Fact> knownFacts = new HashSet<>();
 
-    private static List<Fact> queries = new ArrayList<>();
+    private static Set<Fact> queries = new HashSet<>();
 
-    private static List<Rule> rules = new ArrayList<>();
+    public static Set<Rule> rules = new HashSet<>();
 
 
     public static void reqFact(Fact fact)
     {
         knownFacts.add(fact);
     }
+
     public static void reqQuerie(Fact fact)
     {
         queries.add(fact);
@@ -26,4 +27,8 @@ public class FactObsorver
         rules.add(rule);
     }
 
+
+    public static Fact getFact(String name) {
+        return knownFacts.stream().filter(fact -> fact.getName().equals(name)).findFirst().orElse(null);
+    }
 }

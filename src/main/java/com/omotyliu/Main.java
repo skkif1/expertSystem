@@ -5,8 +5,6 @@ import com.omotyliu.domain.FactObsorver;
 import com.omotyliu.domain.FactState;
 import com.omotyliu.domain.Rule;
 
-import java.util.stream.Collectors;
-
 public class Main {
 
     public static void main(String[] args)
@@ -16,10 +14,18 @@ public class Main {
         {
             InputParser parser = new InputParser(args[0]);
             parser.parseFile();
-            parser.getFacts().forEach(s -> new Fact(s, FactState.TRUE));
-            parser.getQueries().forEach(s -> new Fact(s));
+            parser.getFacts().forEach(s -> Fact.getFact(s, FactState.TRUE));
+            parser.getQueries().forEach(s -> Fact.getFact(s));
             parser.getRules().forEach(s -> new Rule(s));
+
+
+            for (Rule rule : FactObsorver.rules) {
+                rule.execute();
+            }
+
             System.out.println();
+
+
         }
 
 
